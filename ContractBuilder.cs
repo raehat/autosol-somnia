@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace MyUnityLibrary
+namespace Autosol
 {
     /// <summary>
     /// ContractBuilder helps manage game contracts in Unity.

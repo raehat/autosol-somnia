@@ -11,11 +11,11 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ContractConverter
+namespace AutoSol
 {
     #region Public API / Entry
 
-    public static class UniversalCompiler
+    public static class ContractConverter
     {
         // Entry: process one source file and emit for a specific backend
         public static void ProcessFile(string sourcePath, string backendId = "solidity-0.8")

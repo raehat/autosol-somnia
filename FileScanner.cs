@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace MyUnityLibrary
+namespace AutoSol
 {
     public class FileScanner
     {
