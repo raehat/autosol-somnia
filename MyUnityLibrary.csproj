@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core runtime assemblies -->
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+
+    <!-- Only add UnityEditor if you actually need Editor API -->
+    <Reference Include="UnityEditor.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+</Project>
