@@ -5,9 +5,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
-
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
 public class ContractConverter
 {
+    public static void ProcessFile(string filePath)
+    {
+        string code = File.ReadAllText(filePath);
+
+        // Parse syntax tree
+        var syntaxTree = CSharpSyntaxTree.ParseText(code);
+
+        // Compilation unit
+        var compilation = CSharpCompilation.Create("TempAssembly")
+            .AddReferences(
+                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location)
+            )
+            .AddSyntaxTrees(syntaxTree);
+
+        // Emit in memory
+        using (var ms = new MemoryStream())
+        {
+            var result = compilation.Emit(ms);
+
+            if (!result.Success)
+            {
+                Console.WriteLine("❌ Compilation failed for: " + Path.GetFileName(filePath));
+                foreach (var diag in result.Diagnostics)
+                {
+                    Console.WriteLine(diag.ToString());
+                }
+                return;
+            }
+
+            ms.Seek(0, SeekOrigin.Begin);
+
+            var assembly = Assembly.Load(ms.ToArray());
+            var types = assembly.GetTypes();
+
+            // Expecting one interface and one class
+            var interfaceType = types.FirstOrDefault(t => t.IsInterface);
+            var contractType = types.FirstOrDefault(t => t.IsClass);
+
+            if (interfaceType != null && contractType != null)
+            {
+                ConvertToSolidityAndABI(contractType, interfaceType);
+            }
+            else
+            {
+                Console.WriteLine("⚠️ No valid interface/class found in: " + Path.GetFileName(filePath));
+            }
+        }
+    }
     public static void ConvertToSolidityAndABI(Type contractType, Type interfaceType)
     {
         var sbSol = new StringBuilder();

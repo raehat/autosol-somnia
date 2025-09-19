@@ -44,6 +44,10 @@
         "net472": {
           "targetAlias": "net472",
           "dependencies": {
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[4.14.0, )"
+            },
             "Microsoft.NETFramework.ReferenceAssemblies": {
               "suppressParent": "All",
               "target": "Package",
