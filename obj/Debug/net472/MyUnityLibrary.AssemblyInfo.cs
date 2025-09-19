@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyUnityLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b37c4b9567ff7f93c8a9c016695a2bc40e8826b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0661a9578da568ba4b106082fa2ab7f55d5fdcd8")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyUnityLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyUnityLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
